@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/mgambini/AndroidStudioProjects/condominio1/condominio/libs/phonegap-1.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ae619d749d3f7da8fd020c91394f0f9f399af8bd">
+        <dex dex="/home/mgambini/AndroidStudioProjects/condominio1/condominio/build/intermediates/pre-dexed/debug/phonegap-1.4.1_cb19422f5510195e30e3c3a3d0b38fc9f7ee1bcd.jar" />
+    </item>
+
+</items>

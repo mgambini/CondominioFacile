@@ -1,0 +1,126 @@
+<!-- Copyright (c) 2015 Mobile Developer Solutions -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <title>MDS PhoneGap API Demo with jQuery Mobile</title>
+
+ 	<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="index.css" /> 
+
+    <script src="jquery.mobile/jquery-1.7.2.min"></script>
+    <script src="jquery.mobile-1.4.5/jquery-1.11.3.min.js"></script>
+    <script src="jquery.mobile-1.4.5/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+$(document).bind('mobileinit',function(){
+    $.mobile.changePage.defaults.changeHash = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+});
+	</script>
+	<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+	<script type="text/javascript" charset="utf-8" src="index.js"></script>
+  
+	<!-- CDN Respositories: For production, replace lines above with these uncommented minified versions -->
+	</head>
+  
+  <body onload="init();">
+	<div data-role="page" id="page-home" class="type-interior" data-theme="c">
+
+	<div data-role="header" data-theme="b">
+		<h1>Condominio &ldquo;Il Castello&rdquo;</h1>
+ 		<a href="#" data-icon="home" data-iconpos="notext" id="intro" class="ui-btn-right">intro</a>
+	</div>
+
+	<div data-role="content" data-theme="c">			
+		<div class="content-secondary">
+			<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b">
+				<h3>Funzioni disponibili</h3>
+
+				<ul data-role="listview" data-theme="b" data-dividertheme="b">
+					<li id="li-header"><strong>---</strong></li>
+					<li><a id="click-calendario">Calendario</a></li>
+					<li><a data-icon="arrow-u" id="click-inbox">Messaggi ricevuti</a></li>
+					<li><a data-icon="arrow-u" id="click-outbox">Messaggi inviati</a></li>
+					<li><a data-icon="arrow-u" id="click-newmessage">Nuovo messaggio</a></li>
+					<li onclick="localStorage.clear();document.location.href='logon.html';">Logout</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content-primary">
+		    <div class="api-div" id="api-intro">
+		         <h2>Il mio condominio</h2>
+				<h4 class="help">
+  					<p>Usa il calendario per vedere i prossimi impegni, scadenze di pagamenti, turni di pulizia; usa il sistema di messagistica per comnunicare con gli altri condomini</p>
+				</h4>
+			</div>
+
+		    <div class="api-div" id="api-calendario">
+		         <h2>Calendario</h2>
+				<h4 class="help">
+  					<b>Usa i tuoi calendari di Google per condividere gli impegni condominiali</b>
+				</h4>
+				<div class="ui-grid-b">
+					<iframe src="https://www.google.com/calendar/embed?src=js1qu2d2u49rc7gi0fmankoo4o%40group.calendar.google.com&ctz=Europe/Rome" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+     	 		</div>				
+			</div>
+
+		    <div class="api-div" id="api-inbox">
+                <h2>Messaggi ricevuti</h2>
+				<h4 class="help">
+  					<b>Usa la funzione <i>swipe</i> per eliminare i messaggi</b>
+				</h4>
+				<ul data-role="listview" id="lst-inbox" data-theme="b" data-dividertheme="b" data-icon="arrow-r">
+				
+				</ul>
+			</div>
+
+		    <div class="api-div" id="api-outbox">
+				<h2>Messaggi inviati</h2>
+				<h4 class="help">
+  					<b>Usa la funzione <i>swipe</i> per eliminare i messaggi</b>
+				</h4>
+				<ul data-role="listview" id="lst-outbox" data-theme="b" data-dividertheme="b" data-icon="arrow-r">
+				
+				</ul>
+			</div>
+
+		    <div class="api-div" id="api-newmessage">
+                <h2>Componi messaggio</h2>
+				<h4 class="help">Seleziona il destinatario, inserisci l'oggetto e il testo del messaggio, clicca sul pulsante di invio.</h4>
+				<label for="listaUtenti" class="select"></label>
+				<select name="listaUtenti" id="listaUtenti">
+				</select>
+				<label for="oggetto">Oggetto:</label>
+			    <input type="text" name="oggetto" id="oggetto" value="">
+				<label for="testo">Testo:</label>
+			    <textarea id="testo" name="testo"></textarea>
+				<input type="button" value="Invia" onclick="inviaMessaggio()">
+    		</div>
+
+		    
+		</div>
+	</div>
+	<div data-role="footer" data-position="fixed" class="footer-docs" data-theme="b">
+		<p>&copy; 2016 Marco Gambini Mobile Solutions</p>
+	</div>	
+	</div>
+	<div id="confirm" class="ui-content" data-role="popup" data-theme="b">
+        <p id="question">Vuoi davvero eliminare il messaggio?</p>
+        <div class="ui-grid-b">
+            <div class="ui-block-b">
+                <a id="yes" data-role="button" data-mini="true" data-shadow="false" data-theme="b" data-rel="back">Si</a>
+            </div>
+            <div class="ui-block-b">
+                <a id="cancel" data-role="button" data-mini="true" data-shadow="false" data-theme="b" data-rel="back">Annulla</a>
+            </div>
+        </div>
+    </div><!-- /popup -->	
+	<script type="text/javascript" src='https://cdn.firebase.com/js/client/2.3.1/firebase.js'></script>			
+	<script type="text/javascript" charset="utf-8" src="apis/general.js"></script>
+	<script type="text/javascript" charset="utf-8" src="apis/inbox.js"></script>
+	<script type="text/javascript" charset="utf-8" src="apis/outbox.js"></script>
+	<script type="text/javascript" charset="utf-8" src="apis/newmessage.js"></script>
+  </body>
+</html>

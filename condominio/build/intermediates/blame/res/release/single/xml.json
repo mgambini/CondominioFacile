@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/mgambini/AndroidStudioProjects/condominio1/condominio/build/intermediates/res/merged/release/xml/phonegap.xml",
+        "source": "/home/mgambini/AndroidStudioProjects/condominio1/condominio/src/main/res/xml/phonegap.xml"
+    },
+    {
+        "merged": "/home/mgambini/AndroidStudioProjects/condominio1/condominio/build/intermediates/res/merged/release/xml/plugins.xml",
+        "source": "/home/mgambini/AndroidStudioProjects/condominio1/condominio/src/main/res/xml/plugins.xml"
+    }
+]

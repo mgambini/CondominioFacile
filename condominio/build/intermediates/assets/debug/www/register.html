@@ -1,0 +1,90 @@
+<!-- Copyright (c) 2015 Mobile Developer Solutions -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <title>Pagina di registrazione</title>
+
+	<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="index.css" /> 
+
+    <script src="jquery.mobile-1.4.5/jquery-1.11.3.min.js"></script>
+    <script src="jquery.mobile-1.4.5/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+$(document).bind('mobileinit',function(){
+    $.mobile.changePage.defaults.changeHash = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+});
+
+	</script>
+	<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+	<script type="text/javascript" charset="utf-8" src="index.js"></script>
+	<!-- CDN Respositories: For production, replace lines above with these uncommented minified versions -->
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />-->
+	<!-- <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>-->
+	<!-- <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>-->
+	</head>
+  
+  <body onload="init();">
+	<div data-role="page" id="page-home" class="type-interior" data-theme="c">
+
+	<div data-role="header" data-theme="b">
+		<h1>Condominio &ldquo;Il Castello&rdquo;</h1>
+ 		<a href="#" data-icon="home" data-iconpos="notext" id="intro" class="ui-btn-right">intro</a>
+	</div>
+
+	<div data-role="content" data-theme="a">			
+		<div class="content-primary">
+		    <div class="api-div" id="api-intro">
+		         <h2>Registrati</h2>
+				<form id="frmRegister">
+					<p>
+						<input id="invito" type="text" name="invito" placeholder="Codice di registrazione (Es: CC41013001)" value="">
+					</p>
+					<p>
+						<input type="text" name="nome" placeholder="Nome" value="">
+					</p>
+					<p>
+						<input type="text" name="cognome" placeholder="Cognome" value="">
+					</p>
+					<p>
+						<input type="text" name="email" placeholder="Email" value="">
+					</p>
+					<p>
+						<input type="text" name="codiceFiscale" placeholder="Codice Fiscale" value="">
+					</p>
+					<p>
+						<input type="text" name="username" placeholder="Username" value="">
+					</p>
+					<p>
+						<input type="password" name="password" placeholder="Password" value="">
+					</p>
+					<p>
+						<input type="button" name="Register" value="Registrati" onclick="registra()">
+					</p>
+				</form>
+				<div>
+				<h4>Inserisci i tuoi dati e il codice di registrazione, scegli username e password e clicca sul pulsante <strong>&lsquo;Registrati&rdquo;</strong>.</h4>
+				<h4 class="help">Il codice di registrazione è simile al seguente: <strong>CC41013001</strong>.</h4>
+				
+				<p id="copyright">&copy; 2016 MarcoGambini Mobile Solutions</p>
+				</div>		    					
+			</div>
+
+		</div>
+	</div>
+	<div data-role="footer" data-position="fixed" class="footer-docs" data-theme="b">
+		<p>&copy; 2016 MarcoGambini Mobile Solutions</p>
+	</div>	
+	</div>	
+	<style>.content-primary{width:96%}</style>
+	<script type="text/javascript" charset="utf-8" src="apis/device.js"></script>
+	<script type="text/javascript" charset="utf-8" src="apis/events.js"></script>
+	<script type="text/javascript" charset="utf-8" src="firebase.js"></script>
+	<script type="text/javascript" charset="utf-8" src="apis/register.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="cookies.js"></script> 
+	<script type="text/javascript" src='https://cdn.firebase.com/js/client/2.3.1/firebase.js'></script>			
+  </body>
+</html>
